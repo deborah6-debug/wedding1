@@ -1,15 +1,13 @@
-// ✅ GOOGLE SHEETS BACKEND URL
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwWF_3xlbZlOkepPITM7Rn0xUqN5Ga_xkzKcE2d90OPqdXazngTpVWOg-kaZQj-ocC-MA/exec';
+// ✅ GOOGLE SHEETS BACKEND URL (Your correct link)
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxhnf_5tE4sq52QKqSlg7b-tuHzlvEGgMKnj9U8BfqzbHtnWO1XNirxXaugic9qlolr5g/exec';
 
 /* ---------- COUNTDOWN ---------- */
-// Target wedding date — change the date/time if needed
 const weddingDate = new Date("December 12, 2025 10:00:00").getTime();
 
 const countdown = setInterval(() => {
   const now = new Date().getTime();
   const distance = weddingDate - now;
 
-  // Stop the timer if countdown is done
   if (distance <= 0) {
     clearInterval(countdown);
     document.getElementById("days").textContent = "00";
@@ -19,13 +17,11 @@ const countdown = setInterval(() => {
     return;
   }
 
-  // Time calculations
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Update DOM
   document.getElementById("days").textContent = days.toString().padStart(2, "0");
   document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
   document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
@@ -42,25 +38,35 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "Sending...";
 
-  const formData = new FormData(form);
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const attending = formData.get("attending");
-  const message = formData.get("message");
+  const firstName = document.getElementById("firstName").value.trim();
+  const lastName = document.getElementById("lastName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const attending = form.attending?.value || "";
+  const plusOne = form.plusOne?.value || "";
+  const reminder = document.getElementById("reminder").checked ? "Yes" : "No";
+
+  if (!firstName || !lastName || !email || !attending || !plusOne) {
+    msgEl.style.color = "#c62828";
+    msgEl.textContent = "Please fill all the required fields.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send RSVP";
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("firstName", firstName);
+  formData.append("lastName", lastName);
+  formData.append("email", email);
+  formData.append("attending", attending);
+  formData.append("plusOne", plusOne);
+  formData.append("reminder", reminder);
 
   try {
     const response = await fetch(scriptURL, { method: "POST", body: formData });
     if (response.ok) {
       msgEl.style.color = "#2e7d32";
-      msgEl.textContent = "🎉 Your RSVP has been received successfully!";
+      msgEl.innerHTML = `🎉 Thank you, <strong>${firstName}</strong>! Your RSVP has been received successfully.`;
       form.reset();
-
-      // ✅ Show the submitted details
-      document.getElementById("submittedDetails").style.display = "block";
-      document.getElementById("detailName").textContent = name;
-      document.getElementById("detailEmail").textContent = email;
-      document.getElementById("detailAttending").textContent = attending;
-      document.getElementById("detailMessage").textContent = message;
     } else {
       throw new Error("Network response was not ok");
     }
