@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chizoba & Onome - Wedding RSVP</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero-overlay">
+      <p class="small-invite">YOU'RE INVITED</p>
+      <h1 class="couple-name">Chizoba &amp; Onome</h1>
+      <p class="subtitle">We are getting married and would be honored to have you celebrate with us</p>
+
+      <div class="countdown" aria-label="countdown timer">
+        <div class="timebox"><span id="days">00</span><small>Days</small></div>
+        <div class="timebox"><span id="hours">00</span><small>Hours</small></div>
+        <div class="timebox"><span id="minutes">00</span><small>Minutes</small></div>
+        <div class="timebox"><span id="seconds">00</span><small>Seconds</small></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <!-- RSVP SECTION -->
+    <section class="rsvp-section" id="rsvp">
+      <div class="rsvp-card">
+        <h2>RSVP</h2>
+        <p class="lead">Please let us know if you'll be joining us for our special day. Your presence would mean the world to us!</p>
+
+        <form id="rsvpForm" autocomplete="on">
+          <div class="row split">
+            <label class="field">
+              <span>First Name</span>
+              <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required />
+            </label>
+
+            <label class="field">
+              <span>Last Name</span>
+              <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" id="email" placeholder="Enter your email address" required />
+          </label>
+
+          <p class="group-title">Will you be attending?</p>
+          <div class="choices two">
+            <label class="choice">
+              <input type="radio" name="attending" value="yes" required />
+              <div class="choice-body">
+                <strong>Yes! I will be there</strong>
+                <small>Can't wait to celebrate your special day</small>
+              </div>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="attending" value="no" />
+              <div class="choice-body">
+                <strong>Sorry! can't make it.</strong>
+                <small>Will be there in spirit</small>
+              </div>
+            </label>
+          </div>
+
+          <p class="group-title">Will you be bringing a plus one?</p>
+          <div class="choices two">
+            <label class="choice">
+              <input type="radio" name="plusOne" value="yes" required />
+              <div class="choice-body"><strong>Yes, I will be bringing someone</strong></div>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="plusOne" value="no" />
+              <div class="choice-body"><strong>No, just me</strong></div>
+            </label>
+          </div>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="reminder" name="reminder" />
+            <span>Send me gentle reminders as the wedding approaches</span>
+          </label>
+
+          <div class="submit-row">
+            <button type="submit" id="submitBtn">Send RSVP</button>
+            <div id="formMsg" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- WEDDING DETAILS -->
+    <section class="details-section">
+      <h2>Wedding Details</h2>
+      <p class="lead">Everything you need to know about our special day</p>
+
+      <div class="cards">
+        <div class="info-card">
+          <h3>💒 Ceremony</h3>
+          <p><strong>Time:</strong> 10:00 AM</p>
+          <p><strong>Location:</strong> St. Paul's Anglican Church</p>
+          <p><strong>Address:</strong> 5, Omilani Street, Ijeshatedo, Surulere, Lagos.</p>
+        </div>
+
+        <div class="info-card">
+          <h3>🎉 Reception</h3>
+          <p><strong>Time:</strong> 01:00 PM</p>
+          <p><strong>Location:</strong> Whiteley Event Centre</p>
+          <p><strong>Address:</strong> 10/12, Nnobi Street, Surulere, Lagos.</p>
+        </div>
+      </div>
+
+      <p class="color-of-day">Colour of the Day <strong>Creamy White, Lilac</strong></p>
+    </section>
+
+    <!-- NOTE FROM THE COUPLE -->
+    <section class="note-section">
+      <img src="couple.png" alt="Couple" class="couple-img" />
+      <h2>A Note from the Couple</h2>
+      <div class="note-card">
+        <p>“We are beyond excited to share this magical moment with our closest family and friends. Your love and support have meant everything to us throughout our journey together, and we can't imagine celebrating without you by our side.”</p>
+        <p>“Thank you for being such an important part of our story. We look forward to creating beautiful memories together on our wedding day!”</p>
+        <h3 class="sign">Chizoba &nbsp;<span class="heart">❤</span>&nbsp; Onome</h3>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p class="footer-title">❤ Chizoba &amp; Onome ❤</p>
+    <p>December 12, 2025 @ St. Paul's Anglican Church, Surulere, Lagos.</p>
+    <p>Questions? Contact us at <a href="mailto:wedding@chizobaonome.com">wedding@onomechizoba.com</a></p>
+    <p class="copy">© 2025 ChizobaOnome. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ✅ MAIN SCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
